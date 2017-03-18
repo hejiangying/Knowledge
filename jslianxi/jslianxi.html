@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js练习</title>
+	<link rel="stylesheet" type="text/css" href="css/jslianxi.css">
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+</head>
+<body>
+	<p>
+		<button class="show">显示</button>
+		<button class="hide">隐藏</button>
+		<button class="toggle">显示隐藏</button>
+		<button class="slideDown">向下滑动</button>
+		<button class="slideUp">向上滑动</button>
+		<button class="slideToggle">滑动</button>
+		<button class="color">改变背景颜色</button>
+		<button class="css-color">增加类改变颜色</button>
+	</p>
+	<ul class="nav clearfix">
+		<li>哈哈哈</li>
+		<li>哈哈哈</li>
+		<li>哈哈哈</li>
+		<li>哈哈哈</li>
+		<li>哈哈哈</li>
+	</ul>
+	<div class="tab">
+		<ul class="clearfix">
+			<li class="on">1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<div class="tabbox">
+			<div>1111111111</div>
+			<div class="no">2222222222</div>
+			<div class="no">3333333333</div>
+		</div>
+	</div>
+
+
+    <div class="box"></div>
+    <script type="text/javascript">
+    $(function(){
+        $(".show").click(function(){
+            $(".box").show("speed")
+        })
+        $(".hide").click(function(){
+        	$(".box").hide("speed")
+        })
+        $(".toggle").click(function(){
+        	$(".box").toggle("slow")
+        })
+        $(".slideDown").click(function(){
+        	$(".box").slideDown("slow")
+        })
+        $(".slideUp").click(function(){
+        	$(".box").slideUp("slow")
+        })
+        $(".slideToggle").click(function(){
+        	$(".box").slideToggle("slow")
+        })       
+        $(".color").click(function(){
+        	$(".box").css("background-color","blue");
+        });
+        $(".css-color").click(function(){
+        	$(".box").addClass("bg")//removeClass移除类
+        })
+        $(".nav li").click(function(){
+        	 $(this).addClass("bg").siblings().removeClass("bg")
+        })
+       
+
+    });
+    $(function(){
+    	$(".tab li").click(function(){
+    		$(this).addClass("on").siblings().removeClass("on");
+    		var index =$(this).index();
+    		$(".tabbox div").eq(index).removeClass("no").siblings().addClass("no");
+    	  
+    	});
+    	
+    });
+    </script>
+</body>
+</html>
