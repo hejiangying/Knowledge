@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue</title>
+	<link rel="stylesheet" type="text/css" href="./css/vue.css">
+	<script src="./js/jquery-3.2.0.min.js"></script>
+<script src="./js/vue.js"></script> 
+</head>
+<body>
+	<!-- <div class="wrap">
+		<p><span>姓名</span> <span>班级</span> <span>学号</span><span>电话</span> </p>
+		<ul v-for="item in list">
+			<li v-for="(a,b) in item">{{a}}</li>
+		</ul>
+	</div>
+	<div class="wrap1">
+		<table>
+			<thead>
+				<th v-for="head in obj">{{head}}</th>
+			</thead>
+			<tbody>
+				<tr v-for="con in arr">
+					<td v-for="(a,b) in con">{{a}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</br>
+	<div class="wrap2">
+		<input type="text" placeholder="请输入" v-model="message"/>
+		<p>输入的是：{{message}}</p>
+		<input type="checkbox" v-model="checked" id="c" value="选项一" />
+		<label for="c">选项一</label>
+		<input type="checkbox" v-model="checked" id="a" value="选项二"/>
+		<label for="a">选项二</label>
+		<p>选择的是：{{checked}}</p>
+		<br/>
+		<input type="radio" v-model="radioed" id="r" value="女" />
+		<label for="r">女</label>
+		<input type="radio" v-model="radioed" id="m" value="男" />
+		<label for="m">男</label>
+		<p>性别是：{{radioed}}</p>
+		<br/>
+		<select v-model="selected">
+			<option>A</option>
+			<option>B</option>
+		</select>
+		<p>您选择的是:{{selected}}</p>
+	</div>
+	<div class="wrap4">
+		<ul>
+			<li v-for="a in arr"><p :class="a.bg?'bgcolor':''" v-on:click="onClick(a)">{{a.id}}</p></li>
+		</ul>
+
+	</div></br>
+	<div class="wrap5">
+		<button v-on:click="onclick">改变</button>
+		<div v-show="show" class="change"></div>
+	</div> -->
+	<div class="wrap6">
+		<form role="form">
+			<p>姓名：<input type="text" name="name" v-model="username"/> </p>
+			<p>年龄：<input type="text" name="age" v-model="userage"/> </p>
+			<p><button type="button" v-on:click="ok(username,userage)">确定</button><button type="reset">取消</button>  </p>
+		</form>
+		<table border="1px">
+			<thead><tr><th>序号</th> <th v-for="item in head">{{item.title}}</th><th>操作</th></tr></thead>
+			<tbody>
+				<tr v-for="(body,index) in con">
+				    <td>{{index+1}}</td>
+					<td v-for="b in head" v-html="renter(body,b)"></td>
+					<td v-on:click="del(index)">删除</td>
+				</tr>
+				<tr>
+					<td colspan="4" v-on:click="deleteAll" v-show="con != 0">删除全部</td>
+				</tr>
+				<tr>
+					<td colspan="4" v-show="con == ''">暂无数据</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="hide" v-show="isShow">
+			<button @click="button">确定删除</button>
+			<button>取消</button>
+	    </div>
+
+	</div>
+	<div class="wrap7">
+
+		<div v-bind:class="{active:isActive}">333</div> 
+	</div>
+</body>
+<script type="text/javascript">
+	// var vm = new Vue({
+	// 	el:".wrap",
+	// 	data:{
+	// 		list:[
+	// 			{
+	// 				"name":"张三",
+	// 				"class":"123",
+	// 				"id":"1",
+	// 				"phone":"333"
+	// 			},
+	// 			{
+	// 				"name":"李四",
+	// 				"class":"123",
+	// 				"id":"2",
+	// 				"phone":"222"	
+	// 			}
+	// 		]
+	// 	}
+	// })
+	// var vm1 = new Vue({
+	// 	el:".wrap1",
+	// 	data:{
+	// 		arr:[
+	// 		  {
+	// 		  	"name":"哈哈",
+	// 		  	"class":"3"
+	// 		  },
+	// 		  {
+	// 		  	"name":"呵呵",
+	// 		  	"class":"4"
+	// 		  }
+
+	// 		],
+	// 		obj:{
+	// 			"name":"姓名",
+	// 			"class":"班级"
+	// 		}
+
+	// 	}
+	// })
+	// var vm2 = new Vue({
+	// 	el:".wrap2",
+	// 	data:{
+ //          message:"",
+ //          checked:[],
+ //          radioed:"",
+ //          selected:""
+	// 	}
+	// })
+	// var vm4 = new Vue({
+	// 		el:'.wrap4',
+	// 		data:{
+	// 			arr:[
+	// 				{
+	// 					id:"文字",
+	// 					bg:false,
+	// 				},
+	// 				{
+	// 					id:"2",
+	// 					bg:false,
+	// 				},
+	// 				{
+	// 					id:"3",
+	// 					bg:false,
+	// 				},
+	// 				{
+	// 					id:"4",
+	// 					bg:false,
+	// 				},
+	// 			],
+	// 		},
+	// 		methods:{
+	// 			onClick:function(a){
+	// 				for(var i=0;i<this.arr.length;i++)
+	// 				{
+	// 					this.arr[i].bg=false;
+	// 				}
+	// 				a.bg=true;	
+	// 			},
+	// 		},
+	// 	});
+	// var vm5 = new Vue({
+	// 	el:".wrap5",
+	// 	data:{
+ //             show:true,
+	// 	},
+	// 	methods:{
+ //           onclick:function(){
+ //           	   if (this.show==true) {
+ //           	   	this.show=false;
+ //           	   }else{
+ //           	   	this.show=true;
+ //           	   }
+ //           }
+	// 	},
+		
+	// })
+	var vm6 = new Vue({
+		el:'.wrap6',
+		data:{
+			username:'',
+			userage:"",
+			isShow:false,
+			a:"",
+			head:[
+				{
+				  "key":"username",
+				  "title":"用户名"
+				},
+				{
+	              "key":"userage",
+	              "title":"年龄"
+				}
+			    ],
+			 con:[], 
+		    },
+		methods:{
+			renter:function(body,b){
+				return body [b.key];
+			},
+			ok:function(username,userage){
+				if (username != ''&& userage != '') {
+					this.con.push({"username":this.username,"userage":this.userage}),
+					this.username="",
+					this.userage=""
+				}else{
+                    if (username == '') {
+                    	alert("用户名不能为空")
+                    }else{
+                    	alert("年龄不能为空")
+                    }
+				}
+			},
+			deleteAll:function(){
+				this.a=-1;
+				this.isShow=true;
+			},
+			del:function(index){
+				this.isShow=true;
+				this.a=index;
+			},
+			button:function(){
+				if(this.a==-1){
+					this.con=[];
+					this.isShow=false;
+				}
+				else{
+					this.con.splice(this.a,1);
+					this.isShow=false;
+				}
+			}
+		}
+	})
+	var vm7 = new Vue({
+		el:".wrap7",
+		data:{
+			isActive:true
+		}
+	})
+</script> 
+</html>

@@ -7,6 +7,7 @@
 	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
 </head>
 <body>
+ <!--  按钮 -->
 	<p>
 		<button class="show">显示</button>
 		<button class="hide">隐藏</button>
@@ -24,6 +25,7 @@
 		<li>哈哈哈</li>
 		<li>哈哈哈</li>
 	</ul>
+   <!--  tab切换 -->
 	<div class="tab">
 		<ul class="clearfix">
 			<li class="on">1</li>
@@ -39,6 +41,74 @@
 
 
     <div class="box"></div>
+  <!--   轮播 -->
+    <div class="all-img">
+        <button class="left-button">左</button>
+        <ul class="clearfix lunbo">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <button class="right-button">右</button>
+    </div>
+    
+  <!-- 登录 -->
+  <div class="infor">
+      <p>用户名 <input type="text" /> </p>
+      <p>密  码 <input type="password"/> </p>
+      <p><input type="submit" />  </p>
+  </div>
+ <!--   伸缩列表 滑动鼠标版-->
+ <div class="flex">
+     <ul>
+         <li><a href="#">1</a>
+            <div class="flex-child no">
+                 <p>111</p>
+                 <p>111</p>   
+             </div> 
+          </li>      
+         <li><a href="#">2</a>
+             <div class="flex-child no">
+                 <p>222</p>
+                 <p>222</p>   
+             </div>
+         </li>
+         <li><a href="#">3</a>
+            <div class="flex-child no ">
+                 <p>333</p>
+                 <p>333</p>   
+             </div>
+         </li>
+     </ul>
+ </div>
+<!--  伸缩列表 点击鼠标版 -->
+<div class="flex1">
+<ul class="out-box">
+    <li><a href="#">1</a> 
+        <ul class="no">
+            <li><a href="#">111111</a> </li>
+            <li><a href="#">111111</a> </li>
+            <li><a href="#">111111</a> </li>
+        </ul>
+    </li>
+    <li><a href="#">2</a>
+        <ul class="no">
+            <li><a href="#">222222</a> </li>
+            <li><a href="#">222222</a> </li>
+            <li><a href="#">222222</a> </li>
+        </ul>
+    </li>
+    <li><a href="#">3</a>
+        <ul class="no">
+            <li><a href="#">333333</a> </li>
+            <li><a href="#">333333</a> </li>
+            <li><a href="#">333333</a> </li>
+        </ul>
+     </li>
+</ul>
+    
+</div>
     <script type="text/javascript">
     $(function(){
         $(".show").click(function(){
@@ -71,6 +141,7 @@
        
 
     });
+    // tab切换
     $(function(){
     	$(".tab li").click(function(){
     		$(this).addClass("on").siblings().removeClass("on");
@@ -80,6 +151,75 @@
     	});
     	
     });
+    // 左按钮
+    $(".left-button").click(function(){
+        $(".lunbo").animate({right:"+=200px"},2000,function(){
+         var firstLi = $(".lunbo li:first")
+         var lastLi = $(".lunbo li:last")
+         firstLi.insertAfter(lastLi);
+         $(".lunbo").css("right" ,"200px")
+        })
+    })
+    // 右按钮
+     $(".right-button").click(function(){
+        $(".lunbo").animate({right:"-=200px"},2000,function(){
+         var firstLi = $(".lunbo li:first")
+         var lastLi = $(".lunbo li:last")
+         lastLi.insertBefore(firstLi);
+         $(".lunbo").css("right" ,"200px")
+        })
+    })
+     //登录验证
+    var username = "hehe";
+    var userpass = "123";
+     $("input[type = 'submit']").click(function(){
+        var inputName = $("input[type=text]").val();
+        var inputPass = $("input[type=password]").val();
+        if (inputName == "" && inputPass == "") {
+            alert("用户名和密码不能为空");
+            return false;
+        };
+        if (inputName == username && inputPass == userpass) {
+            alert("登录成功");
+        };
+        if (inputName =="") {
+            alert("请输入用户名");
+            return false;
+        };
+         if (inputPass =="") {
+            alert("请输入密码");
+            return false;
+        };
+        if (inputName != username) {
+            alert("用户不存在")
+        };
+         
+        if (inputPass != userpass) {
+            alert("密码错误")
+        };
+
+     })
+     //伸缩列表 鼠标滑动控制
+      $(function(){
+        $(".flex ul li").mouseover(function(){
+            $(this).children().removeClass("no")
+            
+        $(".flex ul li").mouseout(function(){
+             $(this).children().addClass("no")
+          })
+         });
+        
+    });
+      //伸缩列表 鼠标点击控制
+      $(function(){
+        $(".out-box li>a").click(function(){
+            $(".no").hide();
+            $(this).siblings(".no").show();
+        })
+      })
+
+     
+    
     </script>
 </body>
 </html>

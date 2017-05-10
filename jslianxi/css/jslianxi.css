@@ -49,3 +49,68 @@ html,body,ul,li{
 .no{
 	display: none;
 }
+.all-img{
+	width: 200px;
+	height: 150px;
+	border: 1px solid red;
+	margin: auto;
+	position: relative;
+	overflow: hidden;
+}
+.lunbo{
+	width: 800px;
+    list-style: none;
+    position: relative;
+    right: 200px;
+}
+.lunbo li{
+	width: 200px;
+	height: 150px;
+	float: left;
+	line-height: 150px;
+	text-align: center;
+}
+.left-button{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	height: 20px;
+	z-index: 999;
+}
+.right-button{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	height: 20px;
+	z-index: 999;
+}
+.flex,.flex1{
+	width: 200px;
+	height: 100%;
+	border: 1px solid red;
+	margin: auto;
+}
+.flex ul,.flex1 ul{
+	list-style: none;
+}
+.flex ul li,.flex1 ul li{
+	width: 100%;
+	background-color: yellow;
+	line-height: 50px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+}
+.flex ul li a,.flex ul li a{
+	padding: 10px 0px;
+	display: block;
+	text-decoration: none;
+	color: red;
+	height: 100%;
+}
+.flex1{
+	margin-left:50px;
+}
