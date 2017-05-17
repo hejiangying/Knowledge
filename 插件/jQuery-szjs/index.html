@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>HTML5</title>
+
+    <!-- logo icon -->
+    <link rel=" shortcut icon" href="">
+    <!-- css files -->
+    <link rel="stylesheet" href="">
+    <!-- css style -->
+    <style>
+        .textarea-wrapper{width:50%;margin:100px auto;}
+        .textarea-block{position:relative;}
+        .textarea-item{width:100%;height:200px;border:1px solid #ccc;padding:10px;resize:none;color:#aaa;}
+        .textarea-count{position:absolute;bottom:10px;right:0;color:#000;}
+        .textarea-btn{margin-top:10px;}
+    </style>
+</head>
+<body>
+
+    <!-- 页面内容 -->
+    <h3>实时计算用户输入字数</h3>
+    <div class='textarea-wrapper'>
+        <div class='textarea-block'>
+            <textarea class="textarea-item" name="content" placeholder="请输入内容，不超过300字。" maxlength="300" spellcheck="false"></textarea>
+            <div class="textarea-count">
+                <span class="textareaInput">0</span>/<span class="textareaTotal">300</span>
+            </div>
+        </div>
+        <button class='textarea-btn' disabled="">提交</button>
+    </div>
+    
+
+
+
+    <!-- js files -->
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <!-- js scripts -->
+    <script>
+        $(document).ready(function(){
+
+            var lenInput = $('.textarea-item').val().length;
+
+            $(".textarea-item").keyup(function(){
+                lenInput = $(this).val().length;
+                if(lenInput>0 && lenInput<=300){
+                    $('.textareaInput').html(lenInput);
+                    $('.textarea-btn').attr('disabled',false);
+                }else{
+                    $('.textarea-btn').attr('disabled',true);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
