@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+	<style type="text/css">
+		html,body{
+			font-size: 62.5%;
+		}
+		.join{
+			font-size: 2rem;
+			color: #42bd56;
+			font-weight: 300;
+			text-align: center;
+
+		}
+		.input-box {
+			margin-top: 3rem;
+		}
+		input[name='phone'], input[name='password'] ,input[name='namer'],input[name='email']{
+			width: 93%;
+			padding-left: 1rem;
+			height:4.4rem;
+			margin-left: 2%;
+			border: 1px solid #ccc;
+			border-top-left-radius: 3px;
+    		border-top-right-radius: 3px;
+		}
+		input[name='phone'],input[name='password'],input[name='email'] {
+			border-bottom: 0;
+		}
+		input[value='手机号/邮箱'],input[value='密码(最少6位)'],input[value='昵称']{
+			color: #aaa;
+			font-size: 1.6rem;
+		}
+		.ps-img{
+			position: relative;
+		}
+		.ps-img img{
+			width: 1.6rem;
+			height: 1.6rem;
+			display: block;
+			position: absolute;
+			bottom: 20%;
+			right: 5%;
+		}
+		.next{
+			width: 94%;
+			height: 4.4rem;
+			text-align: center;
+			line-height: 4.4rem;
+			background: #17AA52;
+			border:1px solid #17AA52;
+			color:#fff;
+			margin-top: 1rem;
+			font-size: 1.6rem;
+			margin-left: 2%;
+		}
+		.click{
+			text-align: center;
+			margin-top: 5px;
+			font-size: 1.4rem;
+			margin-left: 2%;
+			color: #aaa;
+		}
+		.click a{
+			color: #aaa;
+		}
+		.download{
+			text-align:center;
+			font-size: 1.4rem;
+			margin-top: 2rem;
+		}
+		.down{
+			margin-left: 5px;
+			color: #17AA52;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<div  class="join">
+		<h1>欢迎加入湖南工业大学</h1>
+	</div>
+	<div class="input-box">
+		<input type="text" name="email" placeholder="邮箱"/>
+		<div class="ps-img">
+			<input type="password" name="password" placeholder="密码(最少6位)">
+		</div>
+	</div>
+	<div class="next">
+		下一步
+	</div>
+	
+	<script type="text/javascript">
+		$(".next").click(function(){
+			var username = $("input[name='email']").val();
+			var password = $("input[name='password']").val();
+			if(username==""){
+				alert("用户名不能为空");
+				return false ;
+			};
+				
+			if (password==""){
+				alert("密码不能为空");
+				return false;
+			};
+			window.location.href="login.html"
+
+		})
+	</script>
+</body>
+</html>
