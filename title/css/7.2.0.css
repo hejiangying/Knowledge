@@ -1,0 +1,14 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body,html{
+	font-size: 62.5%;
+	background-color: #f7f7f7;
+}
+.clearfix::after{
+	clear: both;
+	height: 0;
+	display: block;
+	content: "";
+}

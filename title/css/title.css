@@ -1,0 +1,93 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body,html{
+	font-size: 62.5%;
+}
+.title{
+	font-size: 1.4rem;
+	color: black;
+	padding: 1rem 0rem;
+	text-align: center;
+}
+.hot{
+	background: #c4b5f4;
+	padding: 5rem 0rem;
+	font-size: 1.8rem;
+	color: white;
+	text-align: center;
+}
+.arrow>img{
+     width: 10rem;
+     height: 10rem;
+     display: inline-block;
+     float: left;
+	padding:0rem 1.5rem; 
+}
+.clearfix::after{
+	clear: both;
+	display: block;
+	height: 0;
+	content: "";
+}
+ul{
+	list-style:none;
+	float: left;
+}
+.arrow ul li:nth-child(1){
+	font-size: 1.4rem;
+}
+.arrow ul li span img{
+	display: inline-block;
+	width: 1.8rem;
+	height: 1.8rem;
+	vertical-align: -0.46rem;
+	padding-right:0.1rem;
+}
+.arrow ul li span{
+	padding-right:0.5rem;
+}
+.arrow{
+	margin-top: 2rem;
+	position: relative;
+}
+.arrow ul li:nth-child(2){
+	position: absolute;
+	bottom: 0;
+	font-size: 1.3rem;
+}
+.bottom{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	border-top: 0.1rem solid #ccc;
+	padding-top: 0.5rem;
+	background-color: white;
+}
+.bottom ul{
+	width: 100%;
+	list-style: none;
+}
+.bottom ul li{
+	float: left;
+	width: 33.33%;
+	text-align: center;
+}
+.bottom ul li img{
+	display: inline-block;
+	width: 2.6rem;
+	height: 2.6rem;
+}
+.bottom ul li p{
+	font-size: 1.4rem;
+}
+.on{
+	color: #6b41db !importent;
+}
+.fa-pencil,.fa-star-o,.fa-star{
+	color:#6585f5;
+}
+.no{
+	color: red;
+}

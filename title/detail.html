@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport"  content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" />
+	<title>学科分类详情</title>
+	<link rel="stylesheet" type="text/css" href="./css/detail.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome.css">
+	<script src="./js/vue.js"></script>
+	<script src="./js/jquery-3.2.0.min.js"></script>
+	<script type="text/javascript" src="./js/prame.js"></script>
+</head>
+	<body>
+	<div class="main">
+	    <p class="top"><a href="#">&lt;</a>{{list.name}}<span><img src="./img/star.png"> </span> </p>
+		<div class="slideShow">
+			  <!--图片布局开始-->
+			<ul class="clearfix">
+				<li><a><img v-bind:src="list.image" /></a></li>
+			</ul>
+			  <!--图片布局结束-->
+			   
+			  <!--按钮布局开始-->
+			<!-- <div class="showNav">
+				<span class="active"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div> -->
+			  <!--按钮布局结束-->
+		</div>
+		<div class="nav">
+			<ul class="clearfix">
+				<li><a :href="'zahngjielianxi.html?course_id='+list.id"> <i class="fa fa-graduation-cap"></i>章节练习<p>{{list.zt_num}}</p> </a></li>
+				<li><a href="#"> <i class="fa fa-graduation-cap"></i>真题详解<p>{{list.zj_num}}</p> </a></li>
+				<li><a href="#"> <i class="fa fa-graduation-cap"></i>模拟试卷<p>{{list.mn_num}}</p> </a></li>
+			</ul>
+		</div>
+		<div class="con">
+			<p><span class="left-icon"><i class="fa fa-graduation-cap"></i>我的题本  </span><span class="go">&gt;</span>  </p>
+		</div>
+	</div>
+	</body>
+	<script type="text/javascript" src="./js/prame.js"></script>
+	<script type="text/javascript">
+	    var id = getQueryStr("id");
+	    //var name = getQueryStr("name");
+        var Vm = new Vue({
+       	   el:".main",
+       	   data:{
+                list:[]
+       	   },
+       	mounted:function(){
+           		this.getVm();
+           	},
+       	methods:{
+       		getVm:function(){
+       			$.ajax({
+       				url:"http://toget.cn/index.php/home/course/detail",
+       				type:"post",
+       				dataType:"json",
+       				data:{ 
+       					id:id
+       				},
+       				success:function(res){
+                        console.log(res);
+                        this.list=res.info;
+       				    }.bind(this)
+       			    })
+       		    }
+       	    }
+	    });
+	</script>
+</html>

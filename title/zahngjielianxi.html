@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<meta charset="UTF-8">
+  	<meta name="viewport"  content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" />
+  	<title>章节练习</title>
+  	<link rel="stylesheet" type="text/css" href="./css/zhangjielianxi.css">
+  	<link rel="stylesheet" type="text/css" href="./css/font-awesome.css">
+  	<script src="./js/vue.js"></script>
+  	<script src="./js/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="./js/prame.js"></script>
+</head>
+<body>
+	<div class="main">
+		<p class="top"><a href="#">&lt;</a>9858<span><img src="./img/star.png"> </span> </p>
+		<div class="con">
+			<ul class="clearfix">
+				<li v-for="(item1,index) in list" v-on:click="onClick(index)"><span>{{item1.name}}</span><span>(3/10)</span> <span>&gt;</span></li>
+			</ul>
+		</div>
+	</div>
+</body>
+    <script type="text/javascript">
+
+    var id = getQueryStr("course_id");
+    var Vm = new Vue({
+        el:".main",
+         	data:{
+         		list:[]
+         	},
+        mounted:function(){
+           		this.getVm();
+        },
+       	methods:{
+       		getVm:function(){
+       			$.ajax({
+       				url:"http://toget.cn/index.php/home/course/getchapter",
+       				type:"post",
+       				dataType:"json",
+              data:{
+                  course_id: id
+              },
+       				success:function(res){
+                        console.log(id);
+                        this.list=res.lists;
+                        console.log(res)
+       				}.bind(this)
+       			})
+       		},
+          onClick:function(index){
+            var course_id = id;
+            var obj_id =this.list[index].id;
+            var num = 1;
+            window.location.href="7.1.0.html?id="+course_id+"&obj_id="+obj_id+"&type="+num+"";
+            console.log(res.list)
+
+          }
+       		
+        }
+	  })
+    </script>
+</html>

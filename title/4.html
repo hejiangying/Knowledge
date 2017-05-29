@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>4</title>
+	<link rel="stylesheet" type="text/css" href="./css/4.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome.css">
+	<meta name="viewport"  content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" />
+	<script src="./js/vue.js"></script>
+	<script src="./js/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="./js/prame.js"></script>
+</head>
+<body>
+    <div class="main">
+	    <p class="title">{{list.name}}</p>
+	    <div class="con">
+			<div class="arrow clearfix" v-for="(item,index) in list">
+					<a :href="'detail.html?id='+item.id">
+					<img :src="item.head_image" >
+					<ul class="clearfix">
+						<li>{{item.name}}</li>
+						<li><span><i class="fa fa-pencil"></i>{{item.do_num}}人做过  </span> <span><img src="./img/star.jpg">{{item.is_collect_status}}人收藏  </span></li>
+					</ul>
+
+			       </a>
+			</div>
+	    </div>
+   </div>		
+	
+</body>
+<script type="text/javascript"> 
+    var user_id = localStorage.getItem("user_id");
+	var category_id = getQueryStr("category_id");
+	var Vm = new Vue({
+		el:".main",
+		data:{
+			list:[]
+		},
+		mounted:function(){
+           		this.getVm();
+        },
+       	methods:{
+       		getVm:function(){
+       			$.ajax({
+       				url:"http://toget.cn/index.php/home/course/lists",
+       				type:"post",
+       				dataType:"json",
+       				data:{
+       					user_id:user_id,
+       					category_id:category_id
+       				},
+       				success:function(res){
+                        this.list = res.lists;
+       				}.bind(this)
+       			})
+       		},
+       		// onClick:function(index){
+       		// 	var id = this.list.lists[index].id;
+       		// 	window.location.href="detail.html?id="+id+"";
+       		// }
+       	}
+
+	})
+</script>
+</html>

@@ -1,0 +1,52 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body,html{
+	font-size: 62.5%;
+}
+.title{
+	font-size: 1.4rem;
+	color: black;
+	padding: 1rem 0rem;
+	text-align: center;
+}
+.arrow a>img{
+     width: 10rem;
+     height: 10rem;
+     display: inline-block;
+     float: left;
+	 padding:0rem 1.5rem; 
+}
+.clearfix::after{
+	clear: both;
+	display: block;
+	height: 0;
+	content: "";
+}
+ul{
+	list-style:none;
+	float: left;
+}
+.arrow ul li:nth-child(1){
+	font-size: 1.4rem;
+}
+.arrow ul li span img{
+	display: inline-block;
+	width: 1.8rem;
+	height: 1.8rem;
+	vertical-align: -0.46rem;
+	padding-right:0.1rem;
+}
+.arrow ul li span{
+	padding-right:0.5rem;
+}
+.arrow{
+	margin-top: 2rem;
+	position: relative;
+}
+.arrow ul li:nth-child(2){
+	position: absolute;
+	bottom: 0;
+	font-size: 1.3rem;
+}

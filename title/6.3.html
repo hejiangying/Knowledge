@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"  content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" />
+	<title>6.3</title>
+	<link rel="stylesheet" type="text/css" href="./css/zhangjielianxi.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome.css">
+	<script src="./js/vue.js"></script>
+	<script src="./js/jquery-3.2.0.min.js"></script>
+  <script type="text/javascript" src="./js/prame.js"></script>
+</head>
+<body>
+	<div class="main">
+		<p class="top" v-for="item2 in list.title"><a href="#">&lt;</a>{{item2}} <span><img src="./img/star.png"> </span> </p>
+		<div class="con" v-for="item in list.subject">
+			<ul class="clearfix">
+				<li v-for="item1 in item"><span>{{item1}}</span><span>(3/10)</span> <span>&gt;</span> </li>
+			</ul>
+		</div>
+	</div>
+</body>
+    <script type="text/javascript">
+         var id = getQueryStr("id");
+         var Vm = new Vue({
+         	el:".main",
+         	data:{
+         		list:[],
+         	},
+         	mounted:function(){
+           		this.getVm();
+          },
+       	  methods:{
+       		getVm:function(){
+       			$.ajax({
+       				url:"http://toget.cn/index.php/Api/Catalogue/subject",
+       				type:"get",
+       				dataType:"json",
+       				success:function(res){
+                        this.list=res.data;
+       				}.bind(this)
+       			})
+       		},
+       		
+        }
+	})
+    </script>
+</html>

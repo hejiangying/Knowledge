@@ -1,0 +1,72 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body,html{
+	font-size: 62.5%;
+}
+.clearfix::after{
+	clear: both;
+	display: block;
+	height: 0;
+	content: "";
+}
+.top a{
+     text-decoration: none;
+     font-size: 2rem;
+     color: black;
+     display: inline-block;
+     width: 2rem;
+     height: 2rem;
+     float: left;
+}
+.top span img{
+	display: block;
+	width: 2rem;
+	height: 2rem;
+	float: right;
+	margin-right: 1rem;
+	margin-top: 1rem;
+}
+.top{
+	color: black;
+	font-size: 1.4rem;
+	text-align: center;
+	height: 4rem;
+	line-height: 4rem;
+	border-bottom: 0.1rem solid #ccc;
+}
+.courseTitle i:nth-child(1){
+	font-size: 1.6rem;
+	color: #5b34c7;
+	margin: 1rem 1rem 0rem 1rem;
+}
+.courseTitle i:nth-child(2){
+	font-size: 1.6rem;
+	color: #f76d2d;
+	margin: 1rem 1rem 0rem 1rem;
+}
+.courseTitle p{
+	color: black;
+	font-size: 1.6rem;
+}
+.courseTitle .con{
+	width: 80%;
+	margin:auto;
+}
+.courseTitle .con ul{
+	list-style: none;
+	margin-top: 1rem
+}
+.courseTitle .con ul li a{
+	display: block;
+	float: left;
+	text-decoration: none;
+	color: #5b34c7;
+	background: #eeebfa;
+	font-size: 1.5rem;
+	margin-right: 1rem;
+	border-radius: 5rem;
+	padding:0.5rem 1rem;
+	margin-bottom: 1rem;
+}

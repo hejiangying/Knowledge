@@ -1,0 +1,76 @@
+html,body{
+	font-size: 62.5%;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+.clearfix:after{
+	display: block;
+	clear:both;
+	height: 0;
+	content: "";
+}
+.classify ul{
+	list-style: none;
+	width: 100%;
+}
+.classify ul li{
+	float: left;
+	width: 33%;
+	text-align: center;
+	height: 5rem;
+	font-size: 1.4rem;
+	line-height: 6rem;
+	border-bottom: 0.1rem solid #ccc;
+}
+.classify ul li:nth-child(3n+1){
+	border-right: 0.1rem solid #ccc;
+}
+.classify ul li:nth-child(3n+2){
+	border-right: 0.1rem solid #ccc;
+}
+
+.top{
+	padding: 1.4rem 0rem;
+	font-size: 1.4rem;
+	text-align: center;
+	border-bottom: 0.1rem solid #ccc;
+}
+.classify ul li span:nth-child(1){
+	display: inline-block;
+	width: 2rem;
+	height: 2rem;
+}
+.classify ul li span img{
+	display: inline-block;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+.bottom{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	border-top: 0.1rem solid #ccc;
+	padding-top: 0.5rem;
+}
+.bottom ul{
+	width: 100%;
+	list-style: none;
+}
+.bottom ul li{
+	float: left;
+	width: 33.33%;
+	text-align: center;
+}
+.bottom ul li img{
+	display: inline-block;
+	width: 2.6rem;
+	height: 2.6rem;
+}
+.bottom ul li p{
+	font-size: 1.4rem;
+}
+.on{
+	color: #6b41db;
+}

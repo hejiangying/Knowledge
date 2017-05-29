@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分类</title>
+	<link rel="stylesheet" type="text/css" href="./css/classify.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome.css">
+	<meta name="viewport"  content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" />
+	<script src="./js/vue.js"></script>
+	<script src="./js/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="./js/prame.js"></script>
+</head>
+<body>
+    <p class="top">学科分类</p>
+	<div class="classify">
+		<ul class="clearfix">
+			<li v-for="(item, index) in list" v-on:click="onclick(index)"><i class="fa" v-bind:class="item.icon"></i>{{item.name}} </li>
+		</ul>
+	</div>
+	<div class="bottom">
+		<ul class="clearfix">
+			<li class="on"><img src="./img/book.png"><p>题库</p> </li>
+			<li><img src="./img/four.jpg"><p>分类</p> </li>
+			<li><img src="./img/people.png"><p>我的</p> </li>
+		</ul>
+	</div>
+</body>
+<script>
+	var Vm = new Vue({
+		el:".classify",
+		data:{
+            list:[]
+		},
+		mounted:function(){
+           		this.getVm();
+        },
+       	methods:{
+       		getVm:function(){
+       			$.ajax({
+       				url:"http://toget.cn/index.php/home/category/lists",
+       				type:"post",
+       				dataType:"json",
+       				success:function(res){
+                        this.list=res.lists;
+       				}.bind(this)
+       			})
+       		},
+       		onclick:function(index){
+       			var parent_id = this.list[index].id;
+       			var name = this.list[index].name;
+		       	window.location.href="menu2.html?parent_id="+parent_id+"&name="+name+"";
+       		},
+        }
+	})
+</script>
+</html>

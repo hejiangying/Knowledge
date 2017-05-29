@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>menu2</title>
+	<meta name="viewport"  content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="./css/menu2.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome.css">
+	<script src="./js/vue.js"></script>
+	<script src="./js/jquery-3.2.0.min.js"></script>
+	<script type="text/javascript" src="./js/prame.js"></script>
+</head>
+<body>
+   <div class="main">
+	    <p class="top"><a href="#">&lt;</a>{{list.cate_info.name}}<span><img src="./img/Search.png"> </span> </p>
+		<div class="courseTitle" v-for="(item1,index1) in list.lists">
+			<p><i class="fa" v-bind:class="item1.icon"></i>{{item1.name}} </p>
+			<div class="con">
+				<ul class="clearfix">
+					<li v-for="(item,index) in item1.child" v-on:click="onClick(index1,index)"><a href="javascript:void(0)">{{item.name}}</a> </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript"> 
+	var Vm = new Vue({
+		el:".main",
+		data:{
+			list:[]
+		},
+		mounted:function(){
+           		this.getVm();
+        },
+       	methods:{
+       		getVm:function(){
+       			var name =getQueryStr("name");
+	            var parent_id = getQueryStr("parent_id");
+       			$.ajax({
+       				url:"http://toget.cn/index.php/home/category/lists",
+       				type:"post",
+       				dataType:"json",
+       				data:{
+       					parent_id:parent_id
+       				},
+       				success:function(res){
+                        this.list = res;
+                        console.log(res)
+       				}.bind(this)
+       			})
+       		},
+       		onClick:function(index1,index){
+       			var category_id = this.list.lists[index1].child[index].id;
+       			var name = this.list.lists[index1].child[index].name;
+			    window.location.href="4.html?category_id="+category_id+"&name="+name+"";
+   		    }
+    
+       	}
+
+	})
+</script>
+</html>

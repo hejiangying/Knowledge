@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"  content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" />
+	<title>题库</title>
+	<link rel="stylesheet" type="text/css" href="./css/title.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome.css">
+	<script src="./js/vue.js"></script>
+	<script src="./js/jquery-3.2.0.min.js"></script>
+	<script type="text/javascript" src="./js/prame.js"></script>
+</head>
+<body>
+	<p class="title">题库</p>
+	<div class="hot">
+		热门的题库&nbsp;&nbsp;推荐
+	</div>
+	<div class="con">
+		<div class="arrow clearfix" v-for="(item,index) in lists">
+			<img  :src="item.head_image" v-on:click="onClick(index)">
+			<ul class="clearfix" >
+				<li>{{item.name}}</li>
+				<li><span><i class="fa fa-pencil"></i>{{item.do_num}}人做过  </span> <span><i v-bind:class="col[index]?'fa fa-star':'fa fa-star-o' " v-on:click="collect(index)"></i>{{item.collect_num}}人收藏  </span></li>
+			</ul>
+		</div>
+		
+	<div class="bottom">
+		<ul class="clearfix">
+			<li class="on"><img src="./img/book.png"><p>题库</p> </li>
+			<li><img src="./img/four.jpg"><p>分类</p> </li>
+			<li><img src="./img/people.png"><p>我的</p> </li>
+		</ul>
+	</div>
+   </div>	
+	
+</body>
+     <script type="text/javascript">
+           var user_id = localStorage.getItem("user_id");
+           var Vm = new Vue({
+           	el:".con",
+           	data:{
+           		list:[],
+           		lists:[],
+              col:[]
+           	},
+           	mounted:function(){
+           		this.getVm();
+           	},
+           	methods:{
+           		getVm:function(){
+           			$.ajax({
+           				url:"http://toget.cn/index.php/home/index/index",
+           				type:"post",
+           				dataType:"json",
+           				data:{
+           					user_id:user_id
+           				},
+           				success:function(res){
+                            console.log(res);
+                            this.list=res.ad;
+                            this.lists=res.lists;
+                            for(var i=0;i<this.lists.length;i++){
+                              this.col.push(this.lists[i].is_collect_status);
+                            }
+           				}.bind(this)
+           			})
+           		},
+           		onClick:function(index){
+                localStorage.setItem("id",id);
+           			var id = this.lists[index].id;
+           			var name = this.lists[index].name;
+           			window.location.href="detail.html?id="+id+"&name="+name+"";
+           		},
+              collect:function(index){
+                var course_id =this.lists[index].id;
+                if(this.col[index]==false){
+                  $.ajax({
+                    url:"http://toget.cn/index.php/home/course/addcollect",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                      course_id:course_id,
+                      user_id:user_id
+                    },
+                    success:function(res){
+                      this.col.splice(index,1,true);
+
+                    }.bind(this)
+
+                  })
+                }else{
+                   this.col.splice(index,1,false);
+                  $.ajax({
+                    type:"post",
+                    dataType:'json',
+                    url:"http://toget.cn/index.php/home/course/uncollect",
+                    data:{
+                      course_id:course_id,
+                      user_id:user_id
+                    },
+                    success:function(res){
+                    }.bind(this)
+                  })
+                     
+                }
+                 this.getVm();
+              },
+           	}
+
+           });
+     </script>
+</html>
