@@ -1,0 +1,31 @@
+html,body{
+	font-size:62.5%;
+}
+html,body,ul,li,p,a,div,img,span{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color: aquamarine;
+	width: 100%;
+}
+input{
+	width: 70%;
+	height: 5rem;
+	outline: none;
+	border: 0.5rem solid whitesmoke;
+	margin: 25rem auto;
+	text-align: center;
+	border-radius: 5rem;
+	display: block;
+}
+.login{
+	width: 70%;
+	height: 5rem;
+	border: 0.5rem solid whitesmoke;
+	border-radius: 5rem;
+	text-align: center;
+	margin: 25rem auto;
+	font-size: 1.4rem;
+	line-height: 5rem;
+}

@@ -1,0 +1,48 @@
+html,body{
+	font-size:62.5%;
+}
+html,body,ul,li,p,a,div,img,span{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color: aquamarine;
+	width: 100%;
+	position: relative;
+}
+ul{
+	list-style: none;
+}
+ul>li{
+	float: left;
+	text-align: center;
+	margin: 2rem 0rem;
+	font-size: 1.2rem;
+}
+ul li:nth-child(1){
+	width: 15%;
+	font-size:1.4rem;
+}
+ul li:nth-child(2){
+	width: 15%;
+}
+ul li:nth-child(3){
+	width: 70%;
+}
+.more{
+	position: absolute;
+	top: 1.3rem;
+	right: 6.4rem;
+	font-size: 1.4rem;
+	color: white;
+}
+.info{
+	position: absolute;
+	top: 5rem;
+	right: 6.4rem;
+	font-size: 1.4rem;
+	color: white;
+}
+a:hover{
+	color:deepskyblue;
+}

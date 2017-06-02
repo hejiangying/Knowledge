@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no,inital-scale=1.0,maxnum-scale=1.0,min-scale=1.0">
+
+		<title>发布博客</title>
+		<link href="css/more.css" type="text/css" rel="stylesheet"/>
+		<script src="js/jquery-3.2.0.min.js"></script>
+	</head>
+	<body>
+		<div class="tit">
+	    	<p>文章标题 ：<input type="text" name="author"/>  </p>
+			<p>文章作者 ：<input type="text" name="title"/></p>
+			<a href="list.html">暂不发布</a>
+			<span>文章内容：</span>
+			<input type="textarea" name="content" class="tet" />
+			<div class="sub">提交</div>
+		</div>
+		<div class="loading">
+			<div class="squareXS"></div>
+			<div class="squareXL"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(".sub").click(function(){
+			$.ajax({
+				type:"post",
+				url:"http://test.zhituteam.com/zttesttp/index.php?m=home&c=blog&a=add",
+				dataType:"Json",
+				data:{
+					author:$("input[name='title']").val(),
+					title:$("input[name='author']").val(),
+					content:$("input[name='content']").val(),
+				},
+				success:function(res){
+					if(res.status=="ok"){
+					window.location.href="list.html"
+					}
+				}
+			});
+	})
+	</script>
+</html>

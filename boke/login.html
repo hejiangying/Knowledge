@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no,inital-scale=1.0,maxnum-scale=1.0,min-scale=1.0">
+
+		<title>登录页面</title>
+		<link href="css/login.css" type="text/css" rel="stylesheet" />
+		<script src="js/jquery-3.2.0.min.js"></script>
+	</head>
+	<body>
+		<input type="text" placeholder="电话" onfocus="this.placeholder=''" name="phone"/>
+		<input type="password" placeholder="密码" onfocus="this.placeholder=''" name="password" />
+		<div class="login">登录</div>
+	</body>
+	<script type="text/javascript">
+	$(".login").click(function(){
+			$.ajax({
+				type:"post",
+				url:"http://test.zhituteam.com/zttesttp/index.php?m=home&c=user&a=login",
+				dataType:"json",
+				data:{
+					phone:$("input[name='phone']").val(),
+					password:$("input[name='password']").val(),
+				},
+				success:function(res){
+					if(res.status=="ok"){
+					window.location.href="list.html"
+					}
+				}
+			});
+	})
+	</script>
+</html>

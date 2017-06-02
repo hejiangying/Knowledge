@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no,inital-scale=1.0,maxnum-scale=1.0,min-scale=1.0">
+
+		<title>注册页面</title>
+		<link href="css/register.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+	</head>
+	<body>
+		<form>
+		<input type="text"  placeholder="姓名" name="name" onfocus="this.placeholder=''"/>
+		<input type="text" placeholder="年龄" name="age" onfocus="this.placeholder=''" />
+		<input type="password" placeholder="密码" name="password" onfocus="this.placeholder=''" />
+		<input type="text" name="phone" placeholder="电话号码" onfocus="this.placeholder=''"/>
+		<input type="text" placeholder="邮箱" name="email" onfocus="this.placeholder=''"/>
+		<div class="register">提交</div>
+		</form>
+	</body>
+	<script>
+	 $(".register").click(function(){
+			$.ajax({
+				type:"post",
+				url:"http://test.zhituteam.com/zttesttp/index.php?m=home&c=user&a=reg",
+				dataType:"Json",
+				data:{
+					name:$("input[name='name']").val(),
+					age:$("input[name='age']").val(),
+					email:$("input[name='email']").val(),
+					phone:$("input[name='phone']").val(),
+					password:$("input[name='password']").val(),
+				},
+				success:function(res){
+                    if(res.status=="ok"){
+                    	window.location.href="login.html"
+                    }
+				}
+			});
+		
+	  	
+	  })
+	 </script>
+</html>

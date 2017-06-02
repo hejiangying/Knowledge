@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no,inital-scale=1.0,maxnum-scale=1.0,min-scale=1.0">
+		<link href="info.css" type="text/css" rel="stylesheet" />
+		<title>博客详情</title>
+		<script src="js/jquery-3.2.0.min.js"></script>
+	</head>
+	<body>
+		<div class="top">博文详情</div>
+		<div class="tab">
+			<ul>
+			</ul>
+			<div class="tabbox">
+				<!--<div>1111111</div>-->
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+    $(function(){
+    	var offset=0;
+    	list(0);
+    	function list(begin){
+    		var tpl="";
+    		$.ajax({
+    			type:"get",
+    			url:"http://test.zhituteam.com/zttesttp/index.php?m=home&c=blog&a=lists",
+    			dataType:"json",
+    			data:{
+    				offset:begin,
+    				limit:10
+    			},
+    			success:function(res){
+    				if(res.status=="ok"){
+    					var lists=res.lists;
+    					for(var i=0;i<lists.length;i++){
+    						tpl+="<li class='first_li'>"+lists[i].title+"<span class='no'>"+lists[i].id+"</sapn> </li>"
+    					}
+    					$("ul").append(tpl)
+    				}
+    			}
+    		});
+    	}
+    })
+   $(function(){
+	  	$(".tab ul").on("click",".first_li",function(){
+	  		 $this=$(this);
+	  		 var id=$this.children(".no").text();
+	  		 var tpl=""
+	  		 $.ajax({
+    			type:"get",
+    			url:"http://test.zhituteam.com/zttesttp/index.php?m=home&c=blog&a=info",
+    			dataType:"json",
+    			data:{
+    				id:id
+    			},
+    			success:function(res){
+    				if(res.status=="ok"&&res.info!="null"){
+    				  var info=res.info;
+    				  tpl+="<div>"+info.content+"</div>"
+    				}
+    				$(".tabbox").html(tpl);
+    			}
+    		});
+	  		 
+	  		 
+	  	});    	
+  });
+
+	</script>
+</html>

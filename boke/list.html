@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no,inital-scale=1.0,maxnum-scale=1.0,min-scale=1.0">
+		<title>博客列表</title>
+		<link href="css/list.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery-3.2.0.min.js"></script>
+	</head>
+	<body>
+		<ul>
+			<li>文章标题</li>
+			<li>文章作者</li>
+			<li>文章内容</li>
+		</ul>
+		<div class="con"></div>
+		<a href="more.html" class="more">发布文章-></a>
+		<a href="info.html" class="info">博客详情-></a>
+	</body>
+	<script type="text/javascript">
+	 var tpl=""
+		$.ajax({
+			type:"get",
+			url:"http://test.zhituteam.com/zttesttp/index.php?m=home&c=blog&a=lists",
+			dataType:"Json",
+			data:{
+				offset:0,
+				limit:10,
+			},
+			success:function(res){
+				if(res.status=="ok"){
+				var lists=res.lists;
+				for(var i=0; i<lists.length;i++){
+				tpl+="<ul><li>"+lists[i].title+"</li><li>"+lists[i].author+"</li><li>"+lists[i].content+"</li></ul>"
+			}
+			$(".con").append(tpl);
+			}
+			}
+			})
+	</script>
+</html>
