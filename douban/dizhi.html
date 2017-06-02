@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"  content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" />
+		<title>地址管理</title>
+		<link href="css/dizhi.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="js/jquery-3.2.0.min.js" ></script>
+		<script type="text/javascript" src="./js/dizhi.js"></script>
+	</head>
+	<body>
+		<div class="top">
+			<a href="nologin.html">&lt;</a>
+			收货地址管理
+		</div>
+		<div class="dz">
+			<p class="clearfix"><span>收货人:huhuhuhhu</span><span>1313164566</span>  </p>
+			<p>xxxx/xxxxx/xxxx/xxxxx</p>
+			<p><span class="update">修改地址</span><span class="delete">删除</span><span class="moren">默认</span> </p>
+		</div>
+		<div class="more">
+			<span class="jia-top">+</span>
+			<span class="jia">新建地址</span>
+		</div>
+		<div class="shang">
+			<div class="new">
+				<p><span>新建地址</span><span class="hide">X</span></p>
+				<form>
+					<p><span>*</span> <input type="text" name="name" placeholder="收货人姓名" /></p>
+					<p><span>*</span> <input type="text" name="phone" placeholder="收货人电话号码" /></p>
+                    <div id="area"><span>*</span> </div>
+					<p><span>*</span><input type="text" name="name" placeholder="请输入详细地址" /></p>
+				</form>
+				<button>保存</button>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+         $(".jia").click(function(){
+         	$(".shang").show()
+         });
+         $(".hide").click(function(){
+         	$(".shang").hide()
+         })
+	</script>
+</html>

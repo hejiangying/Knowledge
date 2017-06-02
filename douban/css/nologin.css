@@ -1,0 +1,82 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body,html{
+	font-size: 62.5%;
+	background-color:#f7f7f7;
+}
+.clearfix::after{
+	content:"";
+	height: 0;
+	display: block;
+	clear: both;
+}
+.top{
+	background-color: #0aa082;
+	width: 100%;
+	height:4rem;
+	line-height: 4rem;
+	font-size: 1.8rem;
+	color: white;
+	font-weight: bold;
+}
+nav ul {
+	list-style: none;
+	border-bottom: 0.1rem solid #0aa082;
+	background-color: white;
+}
+nav ul li a{
+	display: block;
+	float: left;
+	width: 25%;
+	height: 4rem;
+	color:#0aa082;
+	text-align: center;
+	text-decoration: none;
+	line-height: 4rem;
+	font-size: 1.6rem;
+}
+.head img{
+	width: 10rem;
+	height: 10rem;
+	display: block;
+	margin: auto;
+	margin-top: 1rem;
+}
+.head p{
+	text-align: center;
+	font-size: 1.4rem;
+}
+.con{
+	margin-top: 2rem;
+}
+.con a{
+	text-decoration: none;
+	color: #494949;
+	font-size: 1.4rem;
+	background-color: white;
+	padding: 1.2rem 0rem;
+}
+.con a span{
+	float:right;
+	margin-right: 2rem;
+}
+.con .lager{
+	display: block;
+	width: 100%;
+	border-bottom: 0.01rem solid #D7D7D7;
+}
+.con ul li a{
+	display: block;
+	float: left;
+}
+.con ul{
+	list-style: none;
+	width: 100%;
+	background-color: white;
+	border-bottom: 0.01rem solid #D7D7D7;
+}
+.youhuiquan{
+	margin-top: 3rem;
+}

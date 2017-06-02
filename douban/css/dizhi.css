@@ -1,0 +1,156 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body,html{
+	font-size: 62.5%;
+	background-color: #F7F7F7;
+}
+body{
+	position: relative;
+}
+.clearfix::after{
+	display: block;
+	clear: both;
+	height: 0;
+	content: "";
+}
+.top{
+	color: white;
+	background-color: #0aa082;
+	height: 5rem;
+	font-size: 1.4rem;
+	line-height: 5rem;
+	text-align: center;
+}
+.top a{
+	text-decoration: none;
+	float: left;
+	margin-left: 2rem;
+	color: white;
+}
+.more{
+	background-color: white;
+	height: 10rem;
+}
+.jia{
+	color: #f05f50;
+}
+.jia-top{
+	padding-top: 2rem;
+}
+.more span{
+	font-size: 1.4rem;
+	display: block;
+	text-align: center;
+}
+.new{
+	height: 30rem;
+	width: 100%;
+	background-color: white;
+	padding: 1rem 0rem;
+	position: absolute;
+	bottom: 0;
+}
+.new p{
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+	color:#505050;
+}
+.new p span:nth-child(1){
+	margin-left: 2rem;
+}
+.new p span:nth-child(2){
+	float: right;
+	margin-right: 2rem;
+}
+.new form input{
+	width: 85%;
+	height: 3.5rem;
+	outline: none;
+	border-radius: 0.2rem;
+	border: 0.1rem solid #ccc;
+}
+.new form p>span{
+	color:  #f05f50;
+	margin-right: 0.5rem;
+}
+#area select { 
+	background: transparent; 
+	font-size:1.4rem; 
+	border: 0.1rem solid #ccc; 
+	height: 3.5rem;
+	margin-right: 2rem;
+	margin-top: 1rem;
+	outline: none;
+	border-radius: 0.2rem;
+	margin-left: 0.5rem;
+}
+
+#area span{
+	color: #f05f50;
+	font-size: 1.4rem;
+	margin-left:2rem;
+
+}
+button{
+	width: 85%;
+	background-color: #0aa082;
+	text-align: center;
+	outline: none;
+	border: 1rem solid #0aa082;
+	color: white;
+}
+.new button{
+	margin: auto;
+	display: block;
+	margin-top: 2rem;
+}
+.shang{
+	z-index: 999;
+	background-color: rgba(0,0,0,.3);
+	position: absolute;
+	top: 0;
+	height: 67rem;
+	width: 100%;
+	display: none;
+}
+.dz{
+	width: 100%;
+	background-color: white;
+	padding: 1rem 0rem;
+	margin-bottom: 1rem;
+}
+.dz p{
+	font-size: 1.4rem;
+	color: #505050;
+	width: 90%;
+	margin: auto;
+}
+.dz p:nth-child(1){
+	color: #505050;
+	border-bottom: 0.01rem solid #ccc;
+}
+.dz p:nth-child(2){
+	padding: 1rem 0rem;
+}
+.dz p:nth-child(1) span:nth-child(1){
+   float: left;
+}
+.dz p:nth-child(1) span:nth-child(2){
+	float: right;
+}
+.dz p .update,.delete{
+	font-size: 1.3rem;
+	color:#f05f50;
+}
+.delete{
+	margin-left: 5rem;
+}
+.moren{
+	color: white;
+	background-color: #f05f50;
+	float: right;
+	font-size: 1.3rem;
+	text-align: center;
+}

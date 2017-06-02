@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>豆瓣市集</title>
+		<link href="css/douban.css" rel="stylesheet" type="text/css" />
+		<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0"/>
+	</head>
+	<body>
+		<div class="top">
+			豆瓣市集
+		</div>
+		<nav>
+			<ul class="clearfix">
+				<ul class="clearfix">
+				<li><a id="first">首页</a> </li>
+				<li><a id="second">分类</a> </li>
+				<li><a id="third">购物车</a> </li>
+				<li><a id="fouth">我的</a> </li>
+			</ul>
+		</nav>
+		<div class="slideShow">
+		  <!--图片布局开始-->
+		  <ul>
+		  <!--<li><a href="#"><img src="img/file-1.jpg" /></a></li>
+		  <li><a href="#"><img src="img/file-4.jpg" /></a></li>-->
+		  </ul>
+		  <!--图片布局结束-->
+		   
+		  <!--按钮布局开始-->
+		  <div class="showNav">
+			  <!--<span class="active"></span>
+			  <span></span>
+			  <span></span>-->
+			 <!-- <span></span>-->
+		  </div>
+		  <!--按钮布局结束-->
+		 </div>
+		 <div class="large">
+		 <!--<div class="goods">
+		 	<img src="img/p614908.jpg" />
+		 	<p class="news-title">十四行诗 蔓越莓味手工牛轧糖 150g</p>
+		 	<p class="price">￥29.6 <sub><s>￥55</s></sub> </p>
+		 </div>
+		 <div class="goods">
+		 	<img src="img/d704ac9efb74651.jpg" />
+		 	<p class="news-title">十四行诗 蔓越莓味手工牛轧糖 150g</p>
+		 	<p class="price">￥29.6 <sub> <s>￥55</s></sub> </p>
+		 </div>-->
+       </div>
+	</body>
+	<script src="js/jquery-3.2.0.min.js"></script>
+	<script src="js/swiper-3.4.2.min.js"></script>
+	<script src="js/douban.js"></script>
+	<script src="./js/function.js"></script>
+	<script type="text/javascript">
+	//轮播的代码
+		function lb(){
+			$(document).ready(function(){
+			 var slideShow=$(".slideShow"), //获取最外层框架的名称
+			 ul=slideShow.find("ul"), 
+			 showNumber=slideShow.find(".showNav span"),//获取按钮
+			 oneWidth=slideShow.find("ul li").eq(0).width(); //获取每个图片的宽度
+			 var timer=null; //定时器返回值，主要用于关闭定时器
+			 var iNow=0; //iNow为正在展示的图片索引值，当用户打开网页时首先显示第一张图，即索引值为0
+			  
+			 showNumber.on("click",function(){  //为每个按钮绑定一个点击事件 
+			  $(this).addClass("active").siblings().removeClass("active"); //按钮点击时为这个按钮添加高亮状态，并且将其他按钮高亮状态去掉
+			  var index=$(this).index(); //获取哪个按钮被点击，也就是找到被点击按钮的索引值
+			  iNow=index;
+			  ul.animate({
+			  "left":-oneWidth*iNow, //注意此处用到left属性，所以ul的样式里面需要设置position: relative; 让ul左移N个图片大小的宽度，N根据被点击的按钮索引值iNOWx确定
+			  })
+			 });
+			  
+			 timer=setInterval(function(){ //打开定时器
+			  iNow++;    //让图片的索引值次序加1，这样就可以实现顺序轮播图片
+			  if(iNow>showNumber.length-1){ //当到达最后一张图的时候，让iNow赋值为第一张图的索引值，轮播效果跳转到第一张图重新开始
+			  iNow=0;
+			  }
+			  showNumber.eq(iNow).trigger("click"); //模拟触发数字按钮的click
+			 },5000); //5000为轮播的时间
+			})
+			}
+		var tpl="";
+		var tp="";
+		var op="";
+		var id =getParam("id");
+		$(function(){
+		$.ajax({
+			type:"get",
+			url:"http://ztshop.net/index.php/home/index/index",
+			dataType:"Json",
+				success:function(res){
+  				for (var i=0;i<res.goods.length;i++) {
+  					tpl+="<div class='goods'><img class='img-click' src='"+res.goods[i].img+"'/><p class='cc'>"+res.goods[i].id+"</p> <p class='news-title'>"+res.goods[i].name+"</p></div>";
+  				}
+  				$(".large").html(tpl);
+				for(var j=0;j<res.ad.length;j++){
+					tp+="<li><a href='#'><img src='"+res.ad[j].img+"'/></a></li>"
+					if(j==0){op+="<span class='active'></span>";
+				    }else{
+					op+="<span></span>";
+				    }
+				}
+				$(".slideShow ul").html(tp);
+				$(".showNav").html(op);
+				lb();
+			}
+		});
+		});
+
+		//商品详情ajax
+		$(function(){
+			var id =getParam("id");
+		// $(".large").on("click",".img-click",function(){
+		// 	var $this = $(this);
+  //           var id = $this.siblings(".cc").text();
+		// 	$.ajax({
+		//      	type:"get",
+		//      	url:"http://ztshop.net/index.php/Home/goods/detail?id=id",
+		//      	dataType:"json",
+		//      	data:{
+		//      		id:id
+		//      	},
+		//      	success:function(res){
+		//      		window.location.href="details.html?id="+id+"";
+		//      	}
+		//     });
+		// })
+		// window.location.href="details.html?id="+id+"";
+		});
+		//添加商品到购物车
+		$(function(){
+			var user_id=parseInt(getParam('id'));
+  //          $.ajax({
+		// 	type:'post',
+		// 	dataType:'json',
+		// 	url:'http://ztshop.net/index.php/Home/cart/add',
+		// 	data:{
+		// 		goods_id:goods_id,
+		// 		goods_num:counts,
+		// 		user_id:id,
+		// 	},
+		// 	success:function(data){
+		// 		跳转到购物车界面
+		// 	}
+		// }）;
+
+		})
+	</script>
+</html>

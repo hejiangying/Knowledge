@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0"/>	
+		<title>详情</title>
+		<link href="css/details.css"  rel="stylesheet" type="text/css"/>
+		<script src="js/jquery-3.2.0.min.js"></script>
+		<script src="js/detail.js"></script>
+		<script type="text/javascript" src="./js/function.js"></script>
+	</head>
+	<body>
+		<div class="top">
+			<img src="img/p614908.jpg" />
+			<p class="introduce">韩国直邮 绿吕-洗发450ml + 180ml</p>
+			<p class="price"> ￥69.90 <s>￥99.00</s></p>
+			<p class="pay"> 运费：￥0.00<span>非包邮地区</span></p>
+		</div>
+		<div class="coupon">
+			<span>优惠券</span>
+			<a href="#">满99-5</a>
+			<a href="#">满399-10</a>
+			<a href="#">满599-15</a>
+			<a href="#">满899-50</a>
+		</div>
+		<div class="cl">
+			<span>颜色</span>
+			<a>绿色</a>
+		</div>
+		<div class="gw_num">
+			<span>数量</span>
+			<em class="jian">-</em>
+			<input type="text" value="1" class="num" id="counts" />
+			<em class="add">+</em>
+		</div>
+		<div class="somereg">
+			<p>豆瓣市集担保 |七天无理由退货 |正品保证 |独立品牌 </p>
+		</div>
+		<div class="tab">
+			<ul class="clearfix">
+				<li class="on">商品详情 </li>
+				<li>评价</li>
+				<li>讨论</li>
+			</ul>
+			<div class="tabbox">
+				<div><p>购买须知：1.此商品不支持7天无理由退换货</p>
+					<p>2.此商品不支持货到付款</p>
+					<p>3.根据中国海关总署要求，您所购买的商品清关入境需要提供身份证信息进行入境申请，请您配合，我们不会向第三方泄露您的信息，请您放心。（请在提交订单时把身份证件号填写在备注里哦，不然无法发货哦！）</p>
+				</div>
+				<div class="no">
+					222
+				</div>
+				<div class="no">
+					333
+				</div>
+			</div>
+		</div>
+		<div class="foot">
+			<a class="foot-left" href="shopping.html">
+				<img src="img/shop.png" />
+				<input value="0" type="text" class="number"/>
+			</a>
+			<div class="foot-mid">加购物车</div>
+			<div class="foot-right">立即购买</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+	//点击之后
+	 $(function(){
+      var tt="";
+      var id=getParam("id");
+      $.ajax({
+      	type:"get",
+      	url:"http://ztshop.net/index.php/Home/goods/detail",
+      	dataType:"json",
+      	data:{
+      		id:id
+      	},
+      	success:function(res){
+          var tt="<img class='ok' src='"+res.img+"' id='"+res.id+"'/>";
+          $(".top").html(tt);
+      	}
+      })
+     });
+     //添加商品到购物车
+		$(function(){
+		$(".ok").attr("id");
+		$(".foot-mid").click(function(){
+		var user_id=parseInt(getParam('id'));
+  //          $.ajax({
+		// 	type:'post',
+		// 	dataType:'json',
+		// 	url:'http://ztshop.net/index.php/Home/cart/add',
+		// 	data:{
+		// 		goods_id:goods_id,
+		// 		goods_num:counts,
+		// 		user_id:id,
+		// 	},
+		// 	success:function(data){
+		// 	 window.location.href="shopping.html?id="+id+"";	
+		// 	}
+		// }）;
+         window.location.href="shopping.html?id=1";
+		})
+	})
+     </script>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"  content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" />
+		<title>购物车页面</title>
+		<link href="css/shopping.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="js/jquery-3.2.0.min.js" ></script>
+		<script src="shopping.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div class="top">
+			豆瓣市集
+		</div>
+		<nav>
+			<ul class="clearfix">
+				<li><a id="first">首页</a> </li>
+				<li><a id="second">分类</a> </li>
+				<li><a id="third">购物车</a> </li>
+				<li><a id="fouth">我的</a> </li>
+			</ul>
+		</nav>
+		<div class="content" id="content">
+			<div class="title"><input type="checkbox"  class="check-all" name="checkname" id="checkall"/>PISN </div>
+			<div class="con"><input type="checkbox"  class="check" name="checkname"/>
+				<img src="img/p614908.jpg" />
+				<div class="info">现货PISN休闲百搭学院风2017夏季衬衫女天丝衬衫女宽松牛仔衬衣外套</div>
+				<p class="color-s">水洗蓝 s</p>
+				<div class="count">
+					<span class="reduce">-</span>
+					<input class="count-input" type="text" value="1" />
+					<span class="add">+</span>
+				</div>
+				<span class="subtotal">￥169.00</span>
+				<span class="operation">删除</span>
+			</div>
+			
+		</div>
+		<div class="foot" id="foot">
+		    <input type="checkbox" name="checkname" class="selAll" id="checkAll"/>全选
+		    <div class="foot-right">
+		    	<div class="foot-mid">
+		    		<span>￥0.00</span>
+		    		<p>(不含运费)</p>
+		    	</div>
+		    	<a href="#" class="sum">请选择</a>
+		    </div>
+		</div>
+
+	</body>
+	<script src="./js/function.js"></script>
+	<script type="text/javascript">
+	//添加到购物车
+         $(function(){
+         	var id=id=parseInt(getParam('id'));
+         	$.ajax({
+				async:false,
+				type:'get',
+				dataType:'json',
+				url:'http://ztshop.net/index.php/Home/cart/lists',
+				data:{
+					user_id:id,
+							
+				},
+				success:function(data){
+				var tpl="";
+				for(var i=0;i<data[i].length;i++){
+					1111
+				}
+				$(".content").html(tpl)
+				}
+			});
+         })
+         //删除商品
+         $(function(){
+			$(".operation").click(function(){
+               $.ajax({
+					type:'get',
+					dataType:'json',
+					url:'http://ztshop.net/index.php/Home/cart/delete',
+					data:{
+						id:goods_id,	
+					},	
+					success:function(data){
+						var delete_id=$(".operation").attr("id");	
+						var conf = confirm('确定删除此商品吗？');
+					        if (conf) {
+					           $('#'+delete_id).parent(".con").remove();
+					        }
+						}
+			    });
+		    })
+		})
+	</script>
+</html>

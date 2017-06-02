@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>分类</title>
+		<link href="css/class.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery-3.2.0.min.js"></script>
+		<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0"/>
+	</head>
+	<body>
+		<div class="top">
+			豆瓣市集
+		</div>
+		<nav>
+			<ul class="clearfix">
+				<ul class="clearfix">
+				<li><a id="first">首页</a> </li>
+				<li><a id="second">分类</a> </li>
+				<li><a id="third">购物车</a> </li>
+				<li><a id="fouth">我的</a> </li>
+			</ul>
+		</nav>
+		<div class="con">
+			<!--<a href="#" rel="1">饮食</a>
+			<a href="#" rel="2">服装</a>
+			<a href="#" rel="3">配饰</a>
+			<a href="#" rel="4">包袋</a>
+			<a href="#" rel="5">鞋靴</a>
+			<a href="#" rel="6">美容护肤</a>
+			<a href="#" rel="7">家居</a>
+			<a href="#" rel="8">时间</a>
+			<a href="#" rel="9">3c数码</a>-->
+		</div>
+	</body>
+	<script src="./js/function.js"></script>
+	<script type="text/javascript">
+		var tpl="";
+		$.ajax({
+			type:"get",
+			url:"http://ztshop.net/index.php/Home/category/lists",
+			dataType:"Json",
+			success:function(res){
+				for(var i=0;i<res.length;i++){
+					tpl+="<a id='"+res[i].id+"'>"+res[i].name+"</a>";
+				}
+				$(".con").html(tpl);
+			}
+		});
+		$(".con").on("click","a",function(){
+		var id=$(this).attr('id');
+		var name=$(this).text();
+		u({
+			url : 'food.html',
+			data : {'id':id, 'name':name},
+		});
+	})
+
+	</script>
+</html>
